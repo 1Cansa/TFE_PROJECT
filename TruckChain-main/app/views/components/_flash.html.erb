@@ -1,0 +1,15 @@
+<% unless alert.nil? %>
+  <div data-controller="flash" data-type="error" data-message="<%= alert %>" data-timer="5000"></div>
+<% end %>
+
+<% unless flash[:alert].nil? %>
+  <div data-controller="flash" data-type="error" data-message="<%= alert %>" data-timer="5000"></div>
+<% end %>
+
+<% unless notice.nil? %>
+  <div data-controller="flash" data-type="success" data-message="<%= notice %>" data-timer="5000"></div>
+<% end %>
+
+<% unless flash[:notice].nil? %>
+  <div data-controller="flash" data-type="success" data-message="<%= notice %>" data-timer="5000"></div>
+<% end %>

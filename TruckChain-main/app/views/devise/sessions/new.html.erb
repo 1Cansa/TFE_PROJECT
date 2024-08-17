@@ -1,0 +1,26 @@
+<%= content_for :title, 'Connexion' %>
+
+<div class="nk-block-head">
+  <div class="nk-block-head-content">
+    <h5 class="nk-block-title fw-bolder">Connexion</h5>
+    <div class="nk-block-des"><p>Utilisez vos identifiants pour continuer</p></div>
+  </div>
+</div>
+
+<%= bootstrap_form_for(resource, as: resource_name, url: user_session_path) do |f| %>
+  <%= f.email_field :email, label: 'Adresse email', class: 'form-control-lg', autofocus: true, autocomplete: 'email' %>
+
+  <div class="form-group">
+    <div class="form-label-group">
+      <%= f.label 'Mot de passe', for: 'user_password' %>
+      <%= link_to 'Mot de passe oublié ?', new_user_password_path, class: 'link link-primary link-sm' %>
+    </div>
+    <%= f.password_field :password, hide_label: true, class: 'form-control-lg', autocomplete: 'current-password' %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <%= f.check_box :remember_me, label: "Se souvenir de moi", switch: true %>
+  <% end %>
+
+  <%= f.submit "Se connecter", class: 'btn btn-lg btn-primary btn-block' %>
+<% end %>

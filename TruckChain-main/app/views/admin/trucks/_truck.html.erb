@@ -1,0 +1,51 @@
+<div id="<%= dom_id truck %>">
+  <div class="card">
+    <div class="card-content">
+      <div class="card-inner">
+        <div class="nk-block">
+          <div class="nk-block-head">
+            <h5 class="title">Information</h5>
+          </div>
+          <div class="profile-ud-list">
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Disponible</span>
+                <span class="profile-ud-value"><%= boolean_tag truck.is_available %></span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Chauffeur</span>
+                <span class="profile-ud-value"><%= truck.driver.name unless truck.driver.nil? %></span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Plaque</span>
+                <span class="profile-ud-value"><%= truck.plate %></span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Capacité</span>
+                <span class="profile-ud-value"><%= truck.capacity %> m<sup>3</sup></span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Date de création</span>
+                <span class="profile-ud-value"><%= truck.created_at %></span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Date d'actualisation</span>
+                <span class="profile-ud-value"><%= truck.updated_at %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

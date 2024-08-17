@@ -1,0 +1,21 @@
+<%= content_for :title, 'Changer votre mot de passe' %>
+
+<div class="nk-block-head">
+  <div class="nk-block-head-content">
+    <h5 class="nk-block-title fw-bolder">Changer votre mot de passe</h5>
+    <div class="nk-block-des"><p>Vous pouvez renseigner votre nouveau mot de passe</p></div>
+  </div>
+</div>
+
+<%= bootstrap_form_for(resource, as: resource_name, url: user_password_path, html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control-lg', help: "(#{@minimum_password_length} characters minimum)"  %>
+  <%= f.password_field :password_confirmation, class: 'form-control-lg', autocomplete: "new-password" %>
+  <%= f.submit "Changer mon mot de passe", class: 'btn btn-lg btn-primary btn-block' %>
+
+  <div class="form-note-s2 pt-4">
+    Vous n'avez pas de compte ? <%= link_to "Créer un compte", new_user_registration_path %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-inner">
+    <%= bootstrap_form_for(user, url: user.id.nil? ? admin_users_path : admin_user_path(user)) do |f| %>
+      <% user.errors.each do |error| %>
+        <div data-controller="flash" data-type="error" data-message="<%= error.full_message %>" data-timer="5000"></div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-12"><%= f.text_field :full_name, label: 'Nom', class: 'form-control-lg' %></div>
+        <div class="col-12"><%= f.email_field :email, label: 'Email', class: 'form-control-lg' %></div>
+        <div class="col-12"><%= f.select :role, [%w[USER USER], %w[ADMIN ADMIN]], label: 'Rôle', class: 'form-control-lg' %></div>
+      </div>
+
+      <%= f.submit "Créer", class: 'mt-3 btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

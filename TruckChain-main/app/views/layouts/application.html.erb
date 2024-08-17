@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="ecovet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= favicon_link_tag 'icon_dark.png' %>
+
+  <title><%= yield :title %> | Truck Chain</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: "defer" %>
+  <%= javascript_include_tag "/javascripts/bundle.js", "data-turbo-track": 'reload', defer: "defer" %>
+  <%= javascript_include_tag "/javascripts/scripts.js", "data-turbo-track": 'reload', defer: "defer" %>
+  <%= yield :meta_tags %>
+</head>
+<body class="nk-body bg-theme has-sidebar ui-shady">
+<%= render 'components/flash' %>
+<div class="nk-app-root">
+  <div class="nk-main">
+    <% if content_for? :sidebar %>
+      <%= yield :sidebar %>
+    <% else %>
+      <%= render 'components/sidebar' %>
+    <% end %>
+    <div class="nk-wrap">
+      <% if content_for? :navbar %>
+        <%= yield :navbar %>
+      <% else %>
+        <%= render 'components/navbar' %>
+      <% end %>
+      <div class="nk-content">
+        <div class="container-fluid">
+          <div class="nk-content-inner">
+            <div class="nk-content-body">
+              <div class="wide-md mx-auto">
+                <% if content_for? :header %>
+                  <%= yield :header %>
+                <% end %>
+                <div class="nk-block">
+                  <%= yield %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% if content_for? :footer %>
+        <%= yield :footer %>
+      <% else %>
+        <%= render 'components/footer' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</body>
+</html>

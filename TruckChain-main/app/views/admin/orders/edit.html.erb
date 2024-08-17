@@ -1,0 +1,14 @@
+<%= content_for :title, 'Éditer une commande' %>
+
+<%= render :partial => 'components/header', locals: {title: 'Éditer une commande'} %>
+
+<div class="row" data-controller="coordinate">
+  <div class="col-12 col-md-6">
+    <%= render "form", order: @order %>
+  </div>
+  <div class="col-12 col-md-6">
+    <div class="card">
+      <map class="card-inner" id="map" style="height: 435px;"></map>
+    </div>
+  </div>
+</div>

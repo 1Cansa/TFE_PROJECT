@@ -1,0 +1,7 @@
+<% if resource.errors.any? %>
+  <div
+    data-controller="flash"
+    data-type="error"
+    data-message="<%= I18n.t("errors.messages.not_saved", count: resource.errors.count, resource: resource.class.model_name.human.downcase) %>"
+    data-timer="10000"></div>
+<% end %>

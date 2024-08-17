@@ -1,0 +1,57 @@
+<%= content_for :title, "Commande #{@order.id}" %>
+
+<%= render :partial => 'components/header', locals: {title: "Commande ##{@order.id}"} %>
+
+<% if @order.status.to_i.zero? %>
+  <div class="card mb-4" data-controller="live" id="<%= @order.id %>">
+    <div class="card-content">
+      <div class="card-inner">
+        <div class="nk-block">
+          <div class="nk-block-head">
+            <h5 class="title">
+              <span class="text-danger"><%= icon_tag 'bullet-fill'  %></span>
+              <span>En directe</span>
+            </h5>
+          </div>
+          <div class="profile-ud-list">
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Position</span>
+                <span class="profile-ud-value" id="live_positon">
+                  <%= "#{@log.lat}, #{@log.lng}" unless @log.nil? %>
+                </span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Temperature</span>
+                <span class="profile-ud-value" id="live_temperature">
+                  <%= @log.temperature unless @log.nil? %>
+                </span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Quantité</span>
+                <span class="profile-ud-value" id="live_quantity">
+                  <%= @log.quantity unless @log.nil? %>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="card mb-4"
+     data-order-id="<%= @order.id %>"
+     data-controller="map"
+     data-map-start-value="<%= @order.start %>"
+     data-map-destination-value="<%= @order.destination %>"
+>
+  <map class="card-inner" style="height: 335px;" id="map"></map>
+</div>
+
+<%= render @order %>
