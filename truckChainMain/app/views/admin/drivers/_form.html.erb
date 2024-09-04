@@ -1,0 +1,18 @@
+<div class="card">
+  <div data-controller="select" class="card-inner">
+    <%= bootstrap_form_for(driver, url: driver.id.nil? ? admin_drivers_path : admin_driver_path(driver)) do |f| %>
+      <% driver.errors.each do |error| %>
+        <div data-controller="flash" data-type="error" data-message="<%= error.full_message %>" data-timer="5000"></div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-12"><%= f.text_field :name, label: 'Nom', class: 'form-control-lg' %></div>
+        <div class="col-12"><%= f.text_field :affiliation, label: 'Affiliation', class: 'form-control-lg' %></div>
+        <div class="col-12"><%= f.text_field :email, label: 'Email', class: 'form-control-lg' %></div>
+        <div class="col-12"><%= f.text_field :phone_number, label: 'Téléphone', class: 'form-control-lg' %></div>
+      </div>
+
+      <%= f.submit "Créer", class: 'mt-3 btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

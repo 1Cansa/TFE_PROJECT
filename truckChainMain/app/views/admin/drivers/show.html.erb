@@ -1,0 +1,14 @@
+<%= content_for :title, "Chauffeur #{@driver.id}" %>
+
+<%= render :layout => 'components/header', locals: {title: "Chaffeur ##{@driver.id}"} do %>
+  <%= header_link_tag edit_admin_driver_path(@driver), 'Modifier', 'edit'  %>
+
+  <li class='nk-block-tools-opt'>
+    <%= link_to admin_driver_path(@driver), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: 'êtes vous sûre ?'} do %>
+      <%= icon_tag 'trash' %>
+      <span>Supprimer</span>
+    <% end %>
+  </li>
+<% end %>
+
+<%= render @driver %>

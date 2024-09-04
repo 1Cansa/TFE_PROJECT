@@ -1,0 +1,33 @@
+<div id="<%= dom_id user %>">
+  <div class="card">
+    <div class="card-content">
+      <div class="card-inner">
+        <div class="nk-block">
+          <div class="nk-block-head">
+            <h5 class="title">Information</h5>
+          </div>
+          <div class="profile-ud-list">
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Nom complet</span>
+                <span class="profile-ud-value"><%= user.full_name %></span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Email</span>
+                <span class="profile-ud-value"><%= user.email %></span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Dernière connexion</span>
+                <span class="profile-ud-value"><%= user.last_sign_in_at %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

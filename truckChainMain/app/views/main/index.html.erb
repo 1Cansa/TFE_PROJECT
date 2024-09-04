@@ -1,0 +1,25 @@
+<%= content_for :title, 'Dashboard' %>
+
+<div class="alert alert-pro alert-success alert-dismissible">
+  <div class="alert-text"><h6>Bienvenue sur Truck Chain</h6>
+    <p>Suivez sereinement votre cargaison</p>
+  </div>
+  <button class="close" data-bs-dismiss="alert"></button>
+</div>
+
+<div class="nk-block mb-4">
+  <div class="row g-gs">
+    <div class="col-sm-6">
+      <%= render partial: 'main/stat_card', locals: {title: 'Commandes livrées', count: @shipped_orders_count}  %>
+    </div>
+    <div class="col-sm-6">
+      <%= render partial: 'main/stat_card', locals: {title: 'Commandes en cours', count: @unshipped_orders_count}  %>
+    </div>
+  </div>
+</div>
+
+<% if @orders.blank? %>
+  <%= render :partial => 'components/empty_state' %>
+<% else %>
+  <%= render :partial => admin? ? 'admin_table' : 'user_table' %>
+<% end %>

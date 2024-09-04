@@ -1,0 +1,19 @@
+<%= content_for :title, 'Mot de passe oublié' %>
+
+<div class="nk-block-head">
+  <div class="nk-block-head-content">
+    <h5 class="nk-block-title fw-bolder">Mot de passe oublié</h5>
+    <div class="nk-block-des"><p>Renseignez votre adresse email et nous vous enverrons les instructions</p></div>
+  </div>
+</div>
+
+<%= bootstrap_form_for(resource, as: resource_name, url: user_password_path, html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control-lg' %>
+  <%= f.submit "Continuer", class: 'btn btn-lg btn-primary btn-block' %>
+
+  <div class="form-note-s2 pt-4">
+    Vous n'avez pas de compte ? <%= link_to "Créer un compte", new_user_registration_path %>
+  </div>
+<% end %>

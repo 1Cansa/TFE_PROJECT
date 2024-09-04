@@ -1,0 +1,4 @@
+<%= content_for :title, 'Ajouter un utilisateur' %>
+
+<%= render :partial => 'components/header', locals: {title: 'Ajouter un utilisateur'} %>
+<%= render "form", user: @user %>

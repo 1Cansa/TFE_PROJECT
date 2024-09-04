@@ -1,0 +1,9 @@
+<%= content_for :title, 'Ajouter un chauffeur' %>
+
+<%= render :partial => 'components/header', locals: {title: 'Ajouter une chauffeur'} %>
+
+<div class="row">
+  <div class="col-12">
+    <%= render "form", driver: @driver %>
+  </div>
+</div>

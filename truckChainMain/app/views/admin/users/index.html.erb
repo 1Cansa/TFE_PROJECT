@@ -1,0 +1,38 @@
+<%= content_for :title, 'Tous les utilisateurs' %>
+
+<%= render :layout => 'components/header', locals: {title: 'Tous les utilisateurs'} do %>
+  <%= header_link_tag new_admin_user_path, 'Nouveau', 'plus' %>
+<% end %>
+
+<% if @users.blank? %>
+  <%= render :partial => 'components/empty_state' %>
+<% else %>
+  <div class="card card-preview">
+    <table class="table table-tranx">
+      <thead>
+      <tr class="tb-tnx-head">
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Rôle</th>
+        <th>Date</th>
+        <th class="tb-tnx-action">
+          <span>&nbsp;</span>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr class="tb-tnx-item">
+          <td><%= user.full_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <td><%= user.created_at %></td>
+          <td class="tb-tnx-action">
+            <%= link_to icon_tag("eye"), admin_user_path(user), class: 'text-soft btn btn-icon btn-trigger' %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

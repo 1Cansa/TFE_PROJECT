@@ -1,0 +1,42 @@
+<%= content_for :title, 'Tous les chauffeurs' %>
+
+<%= render :layout => 'components/header', locals: {title: 'Tous les chauffeurs'} do %>
+  <%= header_link_tag new_admin_driver_path, 'Nouveau', 'plus' %>
+<% end %>
+
+<% if @drivers.blank? %>
+  <%= render :partial => 'components/empty_state' %>
+<% else %>
+  <div class="card card-preview">
+    <table class="table table-tranx">
+      <thead>
+      <tr class="tb-tnx-head">
+        <th>#</th>
+        <th>Chauffeur</th>
+        <th>Affiliation</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Date</th>
+        <th class="tb-tnx-action">
+          <span>&nbsp;</span>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @drivers.each do |driver| %>
+        <tr class="tb-tnx-item">
+          <td><%= driver.id %></td>
+          <td><%= driver.name %></td>
+          <td><%= driver.affiliation %></td>
+          <td><%= driver.email %></td>
+          <td><%= driver.phone_number %></td>
+          <td><%= driver.created_at %></td>
+          <td class="tb-tnx-action">
+            <%= link_to icon_tag("eye"), admin_driver_path(driver), class: 'text-soft btn btn-icon btn-trigger' %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

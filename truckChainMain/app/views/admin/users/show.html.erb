@@ -1,0 +1,55 @@
+<%= content_for :title, "Utilisateur #{@user.id}" %>
+
+<%= render :layout => 'components/header', locals: {title: "Utilisateur ##{@user.id}"} do %>
+  <%= header_link_tag edit_admin_user_path(@user), 'Modifier', 'edit'  %>
+  <% if current_user != @user %>
+    <li class='nk-block-tools-opt'>
+      <%= link_to admin_user_path(@user), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: 'êtes vous sûre ?'} do %>
+        <%= icon_tag 'trash' %>
+        <span>Supprimer</span>
+      <% end %>
+    </li>
+  <% end %>
+<% end %>
+
+<%= render @user %>
+
+<div class="nk-block-head mt-4">
+  <h5 class="title">Commandes récentes</h5>
+</div>
+<% if @orders.blank? %>
+  <%= render :partial => 'components/empty_state' %>
+<% else %>
+  <div class="card card-preview">
+    <table class="table table-tranx">
+      <thead>
+      <tr class="tb-tnx-head">
+        <th>#</th>
+        <th>Camion</th>
+        <th>Quantité livrée</th>
+        <th>Quantité reçue</th>
+        <th>Statut</th>
+        <th>Date</th>
+        <th class="tb-tnx-action">
+          <span>&nbsp;</span>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @orders.each do |order| %>
+        <tr class="tb-tnx-item">
+          <td><%= order.id %></td>
+          <td><%= link_to order.truck.plate, admin_truck_path(order.truck) %></td>
+          <td><%= order.shipped_quantity %></td>
+          <td><%= order.received_quantity %></td>
+          <td><%= order_status_tag order.status %></td>
+          <td><%= order.created_at %></td>
+          <td class="tb-tnx-action">
+            <%= link_to icon_tag("eye"), admin_order_path(order), class: 'text-soft btn btn-icon btn-trigger' %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

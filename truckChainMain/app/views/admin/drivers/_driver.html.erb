@@ -1,0 +1,51 @@
+<div id="<%= dom_id driver %>">
+  <div class="card">
+    <div class="card-content">
+      <div class="card-inner">
+        <div class="nk-block">
+          <div class="nk-block-head">
+            <h5 class="title">Information</h5>
+          </div>
+          <div class="profile-ud-list">
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Name</span>
+                <span class="profile-ud-value"><%= driver.name %></span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Affiliation</span>
+                <span class="profile-ud-value"><%= driver.affiliation %></span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Email</span>
+                <span class="profile-ud-value"><%= driver.email %></span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Téléphone</span>
+                <span class="profile-ud-value"><%= driver.phone_number %></span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Date de création</span>
+                <span class="profile-ud-value"><%= driver.created_at %></span>
+              </div>
+            </div>
+            <div class="profile-ud-item">
+              <div class="profile-ud wider">
+                <span class="profile-ud-label">Date d'actualisation</span>
+                <span class="profile-ud-value"><%= driver.updated_at %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
